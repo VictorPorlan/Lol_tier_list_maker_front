@@ -1,23 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { Buffer } from 'buffer';
 import './App.css';
-
+import axios from 'axios';
 function App() {
+  const [baseImage, setBaseImage] = useState<string>("")
+  useEffect(() => {
+    async function fetchSkin(){
+      const data = await axios.get('http://localhost:3001/skin/7')
+      setBaseImage(Buffer.from(data.data[0].splashart).toString('base64'));    
+    }
+    fetchSkin()
+  },[])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={`data:image/jpeg;base64,${baseImage}`} alt={"prueba"}/>
       </header>
     </div>
   );
