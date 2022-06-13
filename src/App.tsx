@@ -1,23 +1,45 @@
-import { useEffect, useState } from 'react';
-import { Buffer } from 'buffer';
-import './App.css';
-import axios from 'axios';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import MainPage from "./pages/main";
+import AllChamps from "./pages/allChamps";
+import AllSkins from "./pages/allSkins";
+import AllFemales from "./pages/allFemales";
+import AllDefaultFemales from "./pages/allDefaultFemales";
+import AllDefaultMales from "./pages/allDefaultMales";
+import AllMales from "./pages/allMales";
+
+
+const darkTheme = createTheme({
+  palette: {
+      mode: "dark",
+      primary: {
+          main: "#ba87fa",
+      },
+      secondary: {
+          main: "#1E1E1E",
+      },
+  },
+});
+
 function App() {
-  const [baseImage, setBaseImage] = useState<string>("")
-  useEffect(() => {
-    async function fetchSkin(){
-      const data = await axios.get('http://localhost:3001/skin/7')
-      setBaseImage(Buffer.from(data.data[0].splashart).toString('base64'));    
-    }
-    fetchSkin()
-  },[])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={`data:image/jpeg;base64,${baseImage}`} alt={"prueba"}/>
-      </header>
-    </div>
+    <>
+    <ThemeProvider theme={darkTheme}>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<MainPage/>} />
+                <Route path="/noSkins" element={<AllChamps/>} />
+                <Route path="/skins" element={<AllSkins/>} />            
+                <Route path="/skins/females" element={<AllFemales/>} />         
+                <Route path="/skins/males" element={<AllMales/>} />                       
+                <Route path="/noSkins/females" element={<AllDefaultFemales/>} />                
+                <Route path="/noSkins/males" element={<AllDefaultMales/>} />                
+            </Routes>
+        </BrowserRouter>
+    </ThemeProvider>
+</>
   );
 }
 
