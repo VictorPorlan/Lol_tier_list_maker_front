@@ -1,37 +1,39 @@
 import axios from "axios";
 import { ISkin } from "../interfaces/skin.interface";
+
 export class SkinGateway {
-    async getChampSkins(id: number): Promise<ISkin[]> {
-        const response = await axios.get(`http://localhost:3001/skin/champ/${id}`)
+
+    async getChampSkins(list: string, id: number): Promise<ISkin[]> {
+        const response = await axios.get(`http://localhost:3001/skin/champ/${id}/${list}`)
         return response.data
     }
-    async getAllDefault(): Promise<ISkin[]>{
-        const response = await axios.get(`http://localhost:3001/skin/all/default`)
+    async getAllDefault(list: string): Promise<ISkin[]>{
+        const response = await axios.get(`http://localhost:3001/skin/all/default/noGender/${list}`)
         return response.data
     }
 
-    async getAll(): Promise<ISkin[]>{
-        const response = await axios.get(`http://localhost:3001/skin`)
+    async getAll(list: string): Promise<ISkin[]>{
+        const response = await axios.get(`http://localhost:3001/skin/all/${list}`)
         return response.data
     }
 
-    async getAllFemales(): Promise<ISkin[]>{
-        const response = await axios.get(`http://localhost:3001/skin/all/female`)
+    async getAllFemales(list: string): Promise<ISkin[]>{
+        const response = await axios.get(`http://localhost:3001/skin/all/female/${list}`)
         return response.data
     }
 
-    async getAllMales(): Promise<ISkin[]>{
-        const response = await axios.get(`http://localhost:3001/skin/all/male`)
+    async getAllMales(list: string): Promise<ISkin[]>{
+        const response = await axios.get(`http://localhost:3001/skin/all/male/${list}`)
         return response.data
     }
 
-    async getAllDefaultFemales(): Promise<ISkin[]>{
-        const response = await axios.get(`http://localhost:3001/skin/all/default/female`)
+    async getAllDefaultFemales(list: string): Promise<ISkin[]>{
+        const response = await axios.get(`http://localhost:3001/skin/all/default/female/${list}`)
         return response.data
     }
 
-    async getAllDefaultMales(): Promise<ISkin[]>{
-        const response = await axios.get(`http://localhost:3001/skin/all/default/male`)
+    async getAllDefaultMales(list: string): Promise<ISkin[]>{
+        const response = await axios.get(`http://localhost:3001/skin/all/default/male/${list}`)
         return response.data
     }
 }

@@ -30,12 +30,12 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainPage/>} />
-                <Route path="/noSkins" element={<AllChamps/>} />
+                <Route path="/default" element={<AllChamps/>} />
                 <Route path="/skins" element={<AllSkins/>} />            
                 <Route path="/skins/females" element={<AllFemales/>} />         
                 <Route path="/skins/males" element={<AllMales/>} />                       
-                <Route path="/noSkins/females" element={<AllDefaultFemales/>} />                
-                <Route path="/noSkins/males" element={<AllDefaultMales/>} />                
+                <Route path="/default/females" element={<AllDefaultFemales/>} />                
+                <Route path="/default/males" element={<AllDefaultMales/>} />                
             </Routes>
         </BrowserRouter>
     </ThemeProvider>
