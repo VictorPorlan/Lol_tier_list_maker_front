@@ -67,6 +67,11 @@ const MainPage: FC = () => {
                         image={require("../assets/diego.jpg")}
                     />
                     <MenuCard
+                        title={"All champions"}
+                        redirect={"/default"}
+                        image={require("../assets/all.jpg")}
+                    />
+                    <MenuCard
                         title={"All females + skins"}
                         redirect={"/skins/females"}
                         image={require("../assets/queen.jpg")}
@@ -75,11 +80,6 @@ const MainPage: FC = () => {
                         title={"All males + skins"}
                         redirect={"/skins/males"}
                         image={require("../assets/jayce.jpg")}
-                    />
-                    <MenuCard
-                        title={"All champions"}
-                        redirect={"/default"}
-                        image={require("../assets/all.jpg")}
                     />
                     <MenuCard
                         title={"All champions + skins"}

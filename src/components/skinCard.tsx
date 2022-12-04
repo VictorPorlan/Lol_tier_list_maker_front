@@ -31,7 +31,7 @@ const SkinCard:FC<IProps> = ({skin, isDefault, handleOpenDialogSkin}) => {
                     {isDefault? skin.name.replace('default', '') : skin.name}
                     </Typography>
                     <Typography gutterBottom variant="h2" component="div" textAlign={'center'}>
-                    {tier}
+                    {tier === null ? '?' : tier}
                     </Typography>
                 </CardContent>
                 <CardActions style={{ width: "100%",
