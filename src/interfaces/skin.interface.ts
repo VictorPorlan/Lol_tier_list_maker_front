@@ -4,5 +4,5 @@ export interface ISkin {
     champId: number;
     splashartUrl: string;
     skinNumber: number;
-    tier: string;
+    tier: number;
 }
